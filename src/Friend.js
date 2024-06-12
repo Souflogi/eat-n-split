@@ -11,6 +11,11 @@ const Friend = ({ friend, isSelected, onSelect }) => {
     owing = `You owe ${friend.name} ${Math.abs(friend.balance)}$`;
     textClass = "red";
   }
+
+  const buttonClickHandler = () => {
+    isSelected ? onSelect(null) : onSelect(friend.id);
+  };
+
   return (
     <li className={isSelected ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
@@ -18,7 +23,7 @@ const Friend = ({ friend, isSelected, onSelect }) => {
         <h3>{friend.name}</h3>
         <p className={textClass}>{owing}</p>
       </div>
-      <Button action={onSelect.bind(null, friend.id)}>
+      <Button action={buttonClickHandler}>
         {isSelected ? "Close" : "Select"}
       </Button>
     </li>

@@ -1,6 +1,6 @@
 import Friend from "./Friend";
 
-const FreindList = ({ FrList, selected, onSelect }) => {
+const FriendList = ({ FrList, selected, onSelect }) => {
   return (
     <ul>
       {FrList.map(f => (
@@ -15,4 +15,4 @@ const FreindList = ({ FrList, selected, onSelect }) => {
   );
 };
 
-export default FreindList;
+export default FriendList;

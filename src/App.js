@@ -39,6 +39,10 @@ function App() {
   }, [friends]);
 
   const selectFriend = id => {
+    if (!id) {
+      setSelectedFriend(null);
+      return;
+    }
     const target = friends.filter(f => f.id === id)[0];
     setSelectedFriend(target);
   };
@@ -51,7 +55,11 @@ function App() {
         selected={selectedFriend}
       />
       {selectedFriend ? (
-        <SplitBillForm selected={selectedFriend} SetFriends={SetFriends} />
+        <SplitBillForm
+          key={selectedFriend.id}
+          selected={selectedFriend}
+          SetFriends={SetFriends}
+        />
       ) : (
         <h1 className="big-title">EAT AND SPLIT</h1>
       )}

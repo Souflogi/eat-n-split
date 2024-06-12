@@ -1,14 +1,14 @@
 import { useState } from "react";
 import AddFriendForm from "./AddFriendForm";
 import Button from "./Button";
-import FreindList from "./FriendList";
+import FriendList from "./FriendList";
 
 export default function SideBar({ FrList, onAdd, onSelect, selected }) {
   const [adding, setAdding] = useState(false);
 
   return (
     <div className="sidebar">
-      <FreindList FrList={FrList} selected={selected} onSelect={onSelect} />
+      <FriendList FrList={FrList} selected={selected} onSelect={onSelect} />
       {adding && (
         <AddFriendForm
           onAdd={onAdd}
