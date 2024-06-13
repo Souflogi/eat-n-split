@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/eat-n-split/static/css/main.03d00d69.css",
+    "main.js": "/eat-n-split/static/js/main.22d8c3c5.js",
+    "index.html": "/eat-n-split/index.html",
+    "main.03d00d69.css.map": "/eat-n-split/static/css/main.03d00d69.css.map",
+    "main.22d8c3c5.js.map": "/eat-n-split/static/js/main.22d8c3c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03d00d69.css",
+    "static/js/main.22d8c3c5.js"
+  ]
+}
