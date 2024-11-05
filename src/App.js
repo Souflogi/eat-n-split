@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import SideBar from "./SideBar";
 import SplitBillForm from "./SplitBillForm";
+import FriendList from "./FriendList";
+import AddFriendForm from "./AddFriendForm";
+import Button from "./Button";
 
 const initialFriends = [
   {
@@ -26,6 +29,12 @@ const initialFriends = [
 function App() {
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [friends, SetFriends] = useState(initialFriends);
+  const [addFormOpen, setAddFormOpen] = useState(false);
+
+  useEffect(() => {
+    // setSelectedFriend(() => friends[friends.length - 1])
+    setSelectedFriend(null);
+  }, [friends]);
 
   const addFriend = ({ name, url }) => {
     SetFriends(friends => [
@@ -33,12 +42,8 @@ function App() {
       { name, image: url, balance: 0, id: Math.random() },
     ]);
   };
-  useEffect(() => {
-    // setSelectedFriend(() => friends[friends.length - 1])
-    setSelectedFriend(null);
-  }, [friends]);
-
   const selectFriend = id => {
+    if (addFormOpen) setAddFormOpen(false);
     if (!id) {
       setSelectedFriend(null);
       return;
@@ -46,14 +51,33 @@ function App() {
     const target = friends.filter(f => f.id === id)[0];
     setSelectedFriend(target);
   };
+
+  const switchForm = () => {
+    setAddFormOpen(adding => !adding);
+    setSelectedFriend(null);
+  };
+
   return (
     <div className="app">
-      <SideBar
-        FrList={friends}
-        onAdd={addFriend}
-        onSelect={selectFriend}
-        selected={selectedFriend}
-      />
+      <SideBar>
+        {!addFormOpen && (
+          <FriendList
+            FrList={friends}
+            selected={selectedFriend}
+            onSelect={selectFriend}
+          />
+        )}
+        {addFormOpen && (
+          <AddFriendForm
+            onAdd={addFriend}
+            setAddFormOpen={setAddFormOpen}
+            onSelect={setSelectedFriend}
+          />
+        )}
+        <Button action={switchForm}>
+          {addFormOpen ? "close" : "Add friend"}
+        </Button>
+      </SideBar>
       {selectedFriend ? (
         <SplitBillForm
           key={selectedFriend.id}

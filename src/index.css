@@ -84,13 +84,16 @@ body {
   background-color: var(--color-dark);
 }
 
+
 .sidebar ul {
+  height: 30vh;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: .4rem;
   font-size: 1.4rem;
   margin-bottom: 2rem;
+  overflow-y: scroll;
 }
 
 .sidebar li {
@@ -147,6 +150,20 @@ form {
   grid-template-columns: 1fr 1.5fr;
   margin-bottom: 1.6rem;
   padding: 1.2rem;
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+}
+
+.profile-picture button {
+  cursor: pointer;
 }
 
 .form-split-bill {
@@ -219,6 +236,5 @@ form h2 span {
 }
 
 .big-title {
-  font-size: 12rem;
-
+  font-size: 10rem;
 }
